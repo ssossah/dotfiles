@@ -1,0 +1,34 @@
+vim.cmd[[colorscheme onenord]]
+-- catppuccin
+-- onenord
+-- vscode
+-- solarized?
+-- gruvbox
+-- settings to change colorscheme for lua file
+-- vim.cmd[[autocmd BufEnter,BufNewFile *.lua colo onenord]]
+-- vim.cmd[[autocmd BufLeave  *.lua colo codedark]]
+-- settings to change colorscheme for sql file
+-- vim.cmd[[autocmd BufEnter,BufNewFile *.sql colo one]]
+-- vim.cmd[[autocmd BufLeave  *.sql colo onenord]]
+
+
+-- 'tomasiser/vim-code-dark',
+-- "lewpoly/sherbet.nvim",
+-- { "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
+-- "morhetz/gruvbox",
+-- "rakr/vim-one",
+-- "habamax/vim-habamax",
+-- 'morhetz/gruvbox',
+-- 'shaunsingh/solarized.nvim',
+-- "sainnhe/gruvbox-material",
+-- "marko-cerovac/material.nvim",
+-- 'Mofiqul/vscode.nvim',
+-- "sainnhe/edge",
+-- "jacoborus/tender.vim",
+-- 'rose-pine/neovim',
+-- "rebelot/kanagawa.nvim",
+-- "EdenEast/nightfox.nvim",
+-- "sainnhe/everforest",
+-- "neanias/everforest-nvim",
+-- "pbrisbin/vim-colors-off",
+-- "kaiuri/nvim-juliana",
