@@ -5,27 +5,35 @@ require('neorg').setup {
             config = {
                 -- folds = false,
                 foldlevelstart=99,
-                icon_preset = "diamond",
+                -- icon_preset = "default",
                 markup_preset = "brave",
             }
         },
         ["core.dirman"] = {     -- Manages Neorg workspaces
             config = {
                 workspaces = {
-                    nav_guides = "~/Desktop/notes/nav_guides",
-                    q2 = "~/Desktop/notes/sdk_guides/q2",
-                    learning = "~/Desktop/notes/sdk_guides/learning",
-                    daily = "~/Desktop/notes",
+                    notes = "~/notes"
                 },
             },
         },
         ["core.keybinds"] = {
             config = {
-                default_keybinds = true,
+                -- default_keybinds = tue,
             },
         },
         ["core.ui"] = { },
         ["core.qol.toc"] = { },
         ["core.integrations.treesitter"] = { },
+        -- ["core.esupports.indent"] = {
+        --     config = {
+        --         tweaks = {
+        --             heading2 = 3,
+        --             heading3 = 3,
+        --             heading4 = 6,
+        --             heading5 = 8,
+        --             heading6 = 10,
+        --         }
+        --     }
+        -- }
     },
 }

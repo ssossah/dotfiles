@@ -2,14 +2,14 @@
   "coc.preferences.useQuickfixForLocations": true,
   "python.linting.ruffEnabled": true,
   "pyright.enable": true,
-  "python.formatting.provider": "ruff",
+  "python.formatting.provider": "none",
   "python.linting.ruffArgs": ["--line-length=150", "--fix"],
   "python.analysis.diagnosticSeverityOverrides": {
-       "reportGeneralTypeIssues": "none",
-       "reportOptionalMemberAccess ": "none",
-       "reportOptionalOperand ": "none",
-       "reportOptionalSubscript ": "none",
-       "reportWildcardImportFromLibrary ": "none"
+           "reportGeneralTypeIssues": "none",
+           "reportOptionalMemberAccess ": "none",
+           "reportOptionalOperand ": "none",
+           "reportOptionalSubscript ": "none",
+           "reportWildcardImportFromLibrary ": "none"
    },
   "snippets.ultisnips.pythonPrompt": false,
   "suggest.enablePreselect": false,
@@ -48,6 +48,8 @@
   "ruff.autoFixOnSave": true,
   "ruff.enable": true,
   "ruff.disableHover": true,
+  "pyright.organizeimports.provider": "ruff",
+  "ruff.organizeImports": true,
   "inlayHint.enable": false,
   "coc.preferences.formatOnSave": false,
   "sql.database": "transactsql"

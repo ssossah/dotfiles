@@ -1,4 +1,4 @@
-vim.cmd[[colorscheme onenord]]
+vim.cmd[[colorscheme vscode]]
 -- catppuccin
 -- onenord
 -- vscode

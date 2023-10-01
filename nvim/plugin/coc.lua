@@ -161,7 +161,12 @@ vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
 vim.api.nvim_create_user_command("Fold", "call CocAction('fold', <f-args>)", { nargs = "?" })
 
 -- Add `:OR` command for organize imports of the current buffer
+--https://www.npmjs.com/package/coc-pyright?activeTab=readme
 vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+-- vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'ruff.executeOrganizeImport')", {})
+-- vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'ruff.executeOrganizeImports')", {})
+-- vim.api.nvim_create_user_command("OF", "call CocActionAsync('runCommand', 'ruff.executeAutofix')", {})
+-- vim.api.nvim_create_user_command("EF", "call CocActionAsync('runCommand', 'ruff.executeFormat')", {})
 
 -- Add (Neo)Vim's native statusline support
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that

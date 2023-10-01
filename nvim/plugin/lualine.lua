@@ -9,7 +9,7 @@ lualine.setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff'},
-    lualine_c = {{ 'filename', path = 2 }}, -- 0 = just filename, 1 = relative path, 2 = absolute path
+    lualine_c = {{ 'filename', path = 1 }}, -- 0 = just filename, 1 = relative path, 2 = absolute path
     lualine_x = {
       {
          'diagnostics',
@@ -28,7 +28,7 @@ lualine.setup {
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
+    lualine_b = {'branch', 'diff'},
     lualine_c = {'filename'},
     lualine_x = {'location'},
     lualine_y = {},

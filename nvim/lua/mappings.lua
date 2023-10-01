@@ -43,21 +43,28 @@ vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-map('n', '<C-h>', '<C-w>h', opts)                                 -- change panes on vim ctrl mappings
+
+map('n', '<C-h>', '<C-w>h', opts)                                               -- change panes on vim ctrl mappings
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
-map('v', '<M-c>', '"+y', opts)                                    -- copy and pasting
-map('n', '<leader>n', ':NvimTreeToggle <CR>', { noremap = true }) -- file explorer
-map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)                -- Barbar: Move to previous/next
+map('v', '<M-c>', '"+y', opts)                                                  -- copy and pasting
+map("v", "<F3>", ":<c-u>HSHighlight 5<CR>", { noremap = true, silent = true })  -- highlighting notes mint green
+map("v", "<F4>", ":<c-u>HSHighlight 10<CR>", { noremap = true, silent = true }) -- highlighting notes bright orange/yellow
+map("v", "<F1>", ":<c-u>HSRmHighlight<CR>", { noremap = true, silent = true })  -- remove highlight
+map('n', '<leader>n', ':NvimTreeToggle <CR>', { noremap = true })               -- file explorer
+map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)                              -- Barbar: Move to previous/next
 map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
-map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)            -- Re-order to previous/next
+map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)                          -- Re-order to previous/next
 map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
-map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)                  -- Goto buffer in position...
+map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)                                -- Goto buffer in position...
 map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
 map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
 map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
 map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
+map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
+map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
+map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
 map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 
 local mappings = {
@@ -71,15 +78,18 @@ local mappings = {
             k  = {"<cmd>Telescope keymaps<cr>", "Find Keymaps"},
             m  = {"<cmd>Telescope marks<cr>", "Marks"},
             M  = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
-            r  = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
-            R  = {"<cmd>Telescope registers<cr>", "Find Registers"},
+            h  = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
+            r  = {"<cmd>Telescope registers<cr>", "Find Registers"},
             w  = {"<cmd>Telescope live_grep<cr>", "Find Word"},
+            i  = {"<cmd>Telescope highlights<cr>", "Find Word"},
         },
     ["<leader>n"] = {
             name = "Nvim Tree",
             f = {"<cmd>NvimTreeFocus<cr>", "Tree Focus"},
             s = {"<cmd>NvimTreeFindFile<cr>", "Tree Find File"},
             c = {"<cmd>NvimTreeCollapse<cr>", "Tree Collapse"},
+            i = {"<cmd>Neorg workspace notes<cr>", "Navigate to neorg index"},
+            r = {"<cmd>Neorg return<cr>", "Return from neorg to code"},
     },
     ["<leader>d"] = {
             name = "Debug",
@@ -103,11 +113,10 @@ local mappings = {
             z = { "<cmd>lua require'dap-python'.test_method()<cr>", "Toggle UI" },
           },
     ["<leader>b"] = {
-            name = "Buffer Management",
-            b = { "<cmd>BufferOrderByBufferNumber<cr>", "Order buffer by number" },          -- automatically sort by...
-            d = { "<cmd>BufferOrderByDirectory<cr>", "Order buffer by directory" },
+            name = "Buffer Management/ Git Blame",
+            d = { "<cmd>BufferOrderByDirectory<cr>", "Order buffer by directory" },          -- automatically sort by...
             l = { "<cmd>BufferOrderByLanguage<cr>", "Order buffer by language" },
-            w = { "<cmd>BufferOrderByWindowNumber<cr>", "Order buffer by window number" },
+            w = { "<cmd>BufferWipeout<cr>", "buffer wipeout" },
             p  = { "<cmd>BufferPin<cr>", "Pin Buffer" },                                     -- buffer close/pin...
             c  = { "<cmd>BufferClose<cr>", "Close Buffer" },
             C  = { "<cmd>BufferCloseAllButCurrent<cr>", "Keep only current buffer" },
@@ -115,6 +124,7 @@ local mappings = {
             CP = { "<cmd>BufferCloseAllButCurrentOrPinned<cr>", "Keep current or pinned buffer" },
             l  = { "<cmd>BufferCloseBuffersRight<cr>", "Close buffers on right" },
             h  = { "<cmd>BufferCloseBuffersLeft<cr>", "Close buffers on left" },
+            t  = { "<cmd>GitBlameToggle<cr>", "Git blame toggle" },
     },
     ["<leader>x"] = {
             name = "Database",
@@ -126,17 +136,46 @@ local mappings = {
     z = {
             name = "Insert line",
             j = {"o<Esc>", "insert new line below"},
-            k = {"o<Esc>", "insert new line above"}
+            k = {"O<Esc>", "insert new line above"}
     },
-    w  = {
-            name = "Resize Window",
-            k = {"<cmd>vertical resize +5<cr>", "Increase vertical window size by 5"},
-            j = {"<cmd>vertical resize -5<cr>", "Decrease vertical window size by 5"},
-            h = {"<cmd>resize +5<cr>", "Increase window size by 5"},
-            l = {"<cmd>resize -5<cr>", "Decrease window size by 5"},
+    ["<leader>w"]  = {
+            name = "Resize Window/Change Workspace",
+            a = { "<cmd>WorkspacesOpen antilles<cr>", "open antilles workspace" },
+            c = { "<cmd>WorkspacesOpen caliper-api<cr>", "open caliper api workspace" },
+            n = { "<cmd>WorkspacesOpen notes<cr>", "open notes workspace" },
+            t = { "<cmd>WorkspacesOpen training<cr>", "open caliper api workspace" },
+            v = { "<cmd>WorkspacesOpen nvim<cr>", "open nvim configs workspace" },
+            h = {"<cmd>vertical resize +5<cr>", "Increase vertical window size by 5"},
+            l = {"<cmd>vertical resize -5<cr>", "Decrease vertical window size by 5"},
+            k = {"<cmd>resize +5<cr>", "Increase window size by 5"},
+            j = {"<cmd>resize -5<cr>", "Decrease window size by 5"},
+    },
+    ["<leader>q"]  = {
+            name = "Quick Notes",
+            q = {"<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<cr>", "Create a note at current cursor line"},
+            v = {"<cmd>:lua require('quicknote').ToggleNoteSigns()<cr>", "Note sign will appear on left handside"},
+            e = {"<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<cr>", "Open note and allow for edit"},
+            d = {"<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<cr>", "Delete note at current line"},
+            n = {"<cmd>:lua require('quicknote').JumpToNextNote()<cr>", "Jump to next note"},
+            N = {"<cmd>:lua require('quicknote').JumpToPreviousNote()<cr>", "Jump to previous note"},
+            V = {"<cmd>:lua require('quicknote').list all notes associated with current buffer()<cr>", "List all notes for current buffer"},
 
-    }
+    },
+    ["<leader>"]  = {
+            name = "Calendar",
+            cc = {"<cmd>Calendar -view=week<cr>", "open calendar"},
+            c = {"<cmd>Calendar -view=week -split=horizontal -position=below -height=18<cr>", "open small calendar"},
+            sh = {"<cmd>HSExport<cr>", "Save highlight"},
+            ih = {"<cmd>HSImport<cr>", "Import highlight"},
+        },
+    ["<leader>p"]  = {
+            name = "Packer Utilities",
+            l = {"<cmd>luafile %<cr>", "save luafile"},
+            p = {"<cmd>PackerSync<cr>", "packer sync"},
+            c = {"<cmd>PackerClean<cr>", "packer clean"},
+            u = {"<cmd>PackerUpdate<cr>", "packer update"},
+        }
 }
 
 local wk = require("which-key")
-wk.register(mappings) -- could pass leader instead of specifying in mappings, but would apply to all mappings
+wk.register(mappings)
