@@ -1,11 +1,26 @@
 require('nvim-tree').setup({
   sync_root_with_cwd = true,
   respect_buf_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = true
+  -- update_focused_file = {
+  --   enable = true,
+  --   update_root = true
+  -- },
+  filters = {
+      dotfiles = false,
+  },
+  git = {
+      enable = true,
+      ignore = false,
+      timeout = 500,
+  },
+  view = {
+      width = 30,
+      --height = 30,
+      side = "left",
+      --auto_resize = true,
   },
 })
+
 
 local nvim_tree_events = require('nvim-tree.events')
 local bufferline_api = require('bufferline.api')

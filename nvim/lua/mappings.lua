@@ -43,6 +43,7 @@ vim.g.mapleader = " "
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+
 map('n', '<C-h>', '<C-w>h', opts)                                 -- change panes on vim ctrl mappings
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
@@ -58,7 +59,35 @@ map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
 map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
 map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
 map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
+map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
+map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
+map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
 map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
+  -- nmap <buffer> <Undo> <Plug>(calendar_undo) -- calendar
+  -- nmap <buffer> u <Plug>(calendar_undo)
+  -- nmap <buffer> U <Plug>(calendar_undo_line)
+  -- nmap <buffer> <TAB> <Plug>(calendar_tab)
+  -- nmap <buffer> <S-Tab> <Plug>(calendar_shift_tab)
+  -- nmap <buffer> n <Plug>(calendar_next_match)
+  -- nmap <buffer> N <Plug>(calendar_prev_match)
+  -- nmap <buffer> t <Plug>(calendar_today)
+  -- nmap <buffer> <CR> <Plug>(calendar_enter)
+  -- nmap <buffer> <C-a> <Plug>(calendar_add)
+  -- nmap <buffer> <C-x> <Plug>(calendar_subtract)
+  -- nmap <buffer> <C-g> <Plug>(calendar_status)
+  -- nmap <buffer> + <Plug>(calendar_plus)
+  -- nmap <buffer> - <Plug>(calendar_minus)
+  -- nmap <buffer> T <Plug>(calendar_task)
+  -- nmap <buffer> E <Plug>(calendar_event)
+  -- nmap <buffer> < <Plug>(calendar_view_left)
+  -- nmap <buffer> > <Plug>(calendar_view_right)
+  -- nmap <buffer> <Space> <Plug>(calendar_space)
+  -- nmap <buffer> <C-l> <Plug>(calendar_redraw)
+  -- nmap <buffer> <C-r> <Plug>(calendar_redraw)
+  -- nmap <buffer> L <Plug>(calendar_clear)
+  -- nmap <buffer> ? <Plug>(calendar_help)
+  -- nmap <buffer> q <Plug>(calendar_hide)
+  -- nmap <buffer> Q <Plug>(calendar_exit)
 
 local mappings = {
     ["<leader>f"] = {
@@ -74,12 +103,15 @@ local mappings = {
             r  = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
             R  = {"<cmd>Telescope registers<cr>", "Find Registers"},
             w  = {"<cmd>Telescope live_grep<cr>", "Find Word"},
+            i  = {"<cmd>Telescope highlights<cr>", "Find Word"},
         },
     ["<leader>n"] = {
             name = "Nvim Tree",
             f = {"<cmd>NvimTreeFocus<cr>", "Tree Focus"},
             s = {"<cmd>NvimTreeFindFile<cr>", "Tree Find File"},
             c = {"<cmd>NvimTreeCollapse<cr>", "Tree Collapse"},
+            i = {"<cmd>Neorg index<cr>", "Navigate to neorg index"},
+            r = {"<cmd>Neorg return<cr>", "Return from neorg to code"},
     },
     ["<leader>d"] = {
             name = "Debug",
@@ -103,11 +135,10 @@ local mappings = {
             z = { "<cmd>lua require'dap-python'.test_method()<cr>", "Toggle UI" },
           },
     ["<leader>b"] = {
-            name = "Buffer Management",
-            b = { "<cmd>BufferOrderByBufferNumber<cr>", "Order buffer by number" },          -- automatically sort by...
-            d = { "<cmd>BufferOrderByDirectory<cr>", "Order buffer by directory" },
+            name = "Buffer Management/ Git Blame",
+            d = { "<cmd>BufferOrderByDirectory<cr>", "Order buffer by directory" },          -- automatically sort by...
             l = { "<cmd>BufferOrderByLanguage<cr>", "Order buffer by language" },
-            w = { "<cmd>BufferOrderByWindowNumber<cr>", "Order buffer by window number" },
+            w = { "<cmd>BufferWipeout<cr>", "buffer wipeout" },
             p  = { "<cmd>BufferPin<cr>", "Pin Buffer" },                                     -- buffer close/pin...
             c  = { "<cmd>BufferClose<cr>", "Close Buffer" },
             C  = { "<cmd>BufferCloseAllButCurrent<cr>", "Keep only current buffer" },
@@ -115,6 +146,7 @@ local mappings = {
             CP = { "<cmd>BufferCloseAllButCurrentOrPinned<cr>", "Keep current or pinned buffer" },
             l  = { "<cmd>BufferCloseBuffersRight<cr>", "Close buffers on right" },
             h  = { "<cmd>BufferCloseBuffersLeft<cr>", "Close buffers on left" },
+            t  = { "<cmd>GitBlameToggle<cr>", "Git blame toggle" },
     },
     ["<leader>x"] = {
             name = "Database",
@@ -126,17 +158,43 @@ local mappings = {
     z = {
             name = "Insert line",
             j = {"o<Esc>", "insert new line below"},
-            k = {"o<Esc>", "insert new line above"}
+            k = {"O<Esc>", "insert new line above"}
     },
-    w  = {
-            name = "Resize Window",
-            k = {"<cmd>vertical resize +5<cr>", "Increase vertical window size by 5"},
-            j = {"<cmd>vertical resize -5<cr>", "Decrease vertical window size by 5"},
-            h = {"<cmd>resize +5<cr>", "Increase window size by 5"},
-            l = {"<cmd>resize -5<cr>", "Decrease window size by 5"},
+    ["<leader>w"]  = {
+            name = "Resize Window/Change Workspace",
+            a = { "<cmd>WorkspacesOpen antilles<cr>", "open antilles workspace" },
+            c = { "<cmd>WorkspacesOpen caliper-api<cr>", "open caliper api workspace" },
+            t = { "<cmd>WorkspacesOpen training<cr>", "open caliper api workspace" },
+            v = { "<cmd>WorkspacesOpen nvim<cr>", "open nvim configs workspace" },
+            h = {"<cmd>vertical resize +5<cr>", "Increase vertical window size by 5"},
+            l = {"<cmd>vertical resize -5<cr>", "Decrease vertical window size by 5"},
+            k = {"<cmd>resize +5<cr>", "Increase window size by 5"},
+            j = {"<cmd>resize -5<cr>", "Decrease window size by 5"},
+    },
+    ["<leader>q"]  = {
+            name = "Quick Notes",
+            q = {"<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<cr>", "Create a note at current cursor line"},
+            v = {"<cmd>:lua require('quicknote').ToggleNoteSigns()<cr>", "Note sign will appear on left handside"},
+            e = {"<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<cr>", "Open note and allow for edit"},
+            d = {"<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<cr>", "Delete note at current line"},
+            n = {"<cmd>:lua require('quicknote').JumpToNextNote()<cr>", "Jump to next note"},
+            N = {"<cmd>:lua require('quicknote').JumpToPreviousNote()<cr>", "Jump to previous note"},
+            V = {"<cmd>:lua require('quicknote').list all notes associated with current buffer()<cr>", "List all notes for current buffer"},
 
-    }
+    },
+    ["<leader>"]  = {
+            name = "Calendar",
+            cc = {"<cmd>Calendar -view=week<cr>", "open calendar"},
+            c = {"<cmd>Calendar -view=week -split=horizontal -position=below -height=18<cr>", "open small calendar"},
+        },
+    ["<leader>p"]  = {
+            name = "Packer Utilities",
+            l = {"<cmd>luafile %<cr>", "save luafile"},
+            p = {"<cmd>PackerSync<cr>", "packer sync"},
+            c = {"<cmd>PackerClean<cr>", "packer clean"},
+            u = {"<cmd>PackerUpdate<cr>", "packer update"},
+        }
 }
 
 local wk = require("which-key")
-wk.register(mappings) -- could pass leader instead of specifying in mappings, but would apply to all mappings
+wk.register(mappings)

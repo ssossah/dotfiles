@@ -1,11 +1,11 @@
-![alt text](https://github.com/ssossah/dotfiles/blob/main/nvim.png?raw=true)
+![alt text](https://github.com/ssossah/dotfiles/blob/master/welcome.png?raw=true)
 
 <u>My Setup:</u>
 
 - **iTerm2** _terminal_
    - use iTerm colors file to prettify terminal
    - use transparency 15 and blur 13 (under profiles > window in preferences)
-   - use solarized dark theme (profiles > colors > color presets)
+   - set theme using provided iterm colors file, this is my solarized dark alternative theme (import the file in profiles > colors > color presets)
 - **Zellij** _terminal multiplexer_
    - settings defaulted to hide key guide
 - **zsh** _shell_
@@ -18,7 +18,7 @@
 - **nvim** _text editor_
    - IDE experience created
    - main colorscheme: onenord
-   - coolest plugin
+   - coolest plugins
       - dadbod for database interaction
       - telescope for fuzzy finding
       - nvim tree for file explorer
