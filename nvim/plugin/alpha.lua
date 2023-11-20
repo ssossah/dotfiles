@@ -23,6 +23,7 @@ dashboard.section.header.val = icon_val
    dashboard.button("w",  "󰈬  Find word", ":Telescope live_grep <CR>"),
    dashboard.button("b",  "  Jump to bookmarks", "<leader>fm<CR>"),
    dashboard.button("s",  "  Change colorscheme", ":ChangeColorScheme<CR>"),
+   dashboard.button("i",  "  Toggle transparency", ":ChangeColorScheme<CR>"),
    dashboard.button("c",  "  Calendar", ":Calendar -view=week -split=horizontal -position=below -height=18<CR>"),
    dashboard.button("g",  "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
    dashboard.button("p",  "  Plugins", ":e ~/.config/nvim/lua/plugins/packer_plugins.lua<CR>"),

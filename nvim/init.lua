@@ -35,8 +35,19 @@ function SearchPluginHelp()
 end
 vim.cmd([[command! -nargs=0 SearchPluginHelp lua SearchPluginHelp()]])
 
+
+function RunCommand()
+    local command = vim.fn.input('command: ')
+    if command ~='' then
+        vim.cmd(":!" .. command)
+    end
+end
+vim.cmd([[command! -nargs=0 RunCommand lua RunCommand()]])
+vim.api.nvim_set_keymap('n', '<leader>t', ':RunCommand<CR>', { noremap = true }) -- file explorer
+
 -- colorscheme
 local currentColorScheme = "onenord"
+-- local currentColorScheme = "vscode"
 function ChangeColorScheme()
     local newColorScheme = vim.fn.input('Enter colorscheme: ')
     if newColorScheme ~='' then
@@ -56,9 +67,13 @@ vim.cmd(':colorscheme ' .. currentColorScheme)
 -- vim.cmd [[highlight Dash guibg=None gui=bold]]
 --
 --neorg
-vim.cmd [[highlight @attribute guifg=#ebcb8b]]
-vim.cmd [[highlight @label guifg=#88c0d0]]
-vim.cmd [[highlight @constant guifg=#b988b0]]
+-- vim.cmd [[highlight @attribute guifg=#ebcb8b]]
+-- vim.cmd [[highlight @label guifg=#88c0d0]]
+-- vim.cmd [[highlight @constant guifg=#b988b0]]
+--vscode colorscheme
+-- vim.cmd [[highlight @field guifg=#ffffff]]
+-- vim.cmd [[highlight @constant guifg=#ffffff]]
+-- vim.cmd [[highlight @method.call guifg=#ffffff]]
 --
 -- -- vim.cmd [[highlight Headline2 guibg=#375f6b]]
 -- -- vim.cmd [[highlight @label guifg=#67c5e0]]

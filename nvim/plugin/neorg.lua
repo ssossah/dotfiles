@@ -12,13 +12,13 @@ require('neorg').setup {
         ["core.dirman"] = {     -- Manages Neorg workspaces
             config = {
                 workspaces = {
-                    notes = "~Code/notes"
+                    notes = "~/Desktop/notes"
                 },
             },
         },
         ["core.keybinds"] = {
             config = {
-                default_keybinds = tue,
+                -- default_keybinds = tue,
             },
         },
         ["core.ui"] = { },

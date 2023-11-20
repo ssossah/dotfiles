@@ -51,6 +51,7 @@ require("packer").startup(function(use)
 		{ "natecraddock/workspaces.nvim", config = function() require("workspaces").setup() end },          -- easy workspace navigation & search
 		{ "nvim-neorg/neorg", run = ":Neorg sync-parsers" },                                                -- notes
 		{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },                                           -- syntax highlighting
+		 "nvim-treesitter/playground",                                           -- syntax highlighting
         -- { "lukas-reineke/headlines.nvim",  -- adds highlights for Neorg and markdown
         --     ft = { "markdown", "org", "norg" },
         --     after = 'nvim-treesitter',
