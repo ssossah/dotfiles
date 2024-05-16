@@ -1,6 +1,4 @@
-local high_str = require("high-str")
-
-high_str.setup({
+require("high-str").setup({
 	verbosity = 0,
 	saving_path = "/tmp/highstr/",
 	highlight_colors = {

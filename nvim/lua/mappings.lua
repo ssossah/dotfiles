@@ -145,6 +145,9 @@ local mappings = {
             n = { "<cmd>WorkspacesOpen notes<cr>", "open notes workspace" },
             t = { "<cmd>WorkspacesOpen training<cr>", "open caliper api workspace" },
             v = { "<cmd>WorkspacesOpen nvim<cr>", "open nvim configs workspace" },
+            d = { "<cmd>WorkspacesOpen dbm<cr>", "open nvim configs workspace" },
+            wd = { "<cmd>WorkspacesOpen NBKC<cr>", "open nvim configs workspace" },
+            wn = { "<cmd>WorkspacesOpen sql_server<cr>", "open nvim configs workspace" },
             h = {"<cmd>vertical resize +5<cr>", "Increase vertical window size by 5"},
             l = {"<cmd>vertical resize -5<cr>", "Decrease vertical window size by 5"},
             k = {"<cmd>resize +5<cr>", "Increase window size by 5"},
@@ -174,6 +177,12 @@ local mappings = {
             p = {"<cmd>PackerSync<cr>", "packer sync"},
             c = {"<cmd>PackerClean<cr>", "packer clean"},
             u = {"<cmd>PackerUpdate<cr>", "packer update"},
+        },
+    ["<leader>t"]  = {
+            name = "Tagbar",
+            t = {"<cmd>TagbarToggle<cr>", "Toggle class, functions, etc list"},
+            n = {"<cmd>TagbarJumpNext<cr>", "Jump to next tag"},
+            p = {"<cmd>TagbarJumpPrev<cr>", "Jump to previous tag"},
         }
 }
 
