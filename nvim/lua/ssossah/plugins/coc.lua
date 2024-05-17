@@ -1,0 +1,136 @@
+-- return {
+--      "neoclide/coc.nvim",
+--     branch = "release",
+--     config = function()
+--
+--     local keyset = vim.keymap.set
+--     -- Autocomplete
+--     function _G.check_back_space()
+--         local col = vim.fn.col(".") - 1
+--         return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
+--     end
+--
+--     -- tab completion
+--     local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
+--     local function check_back_space()
+--         local col = vim.fn.col('.') - 1
+--         return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+--     end
+--
+--
+--     vim.keymap.set("i", "<Tab>",
+--         function()
+--             if vim.fn['coc#pum#visible']() == 1 then
+--                 return vim.fn['coc#pum#next'](1)
+--             end
+--             if check_back_space() then
+--                 return vim.fn['coc#refresh']()
+--             end
+--             return "<Tab>"
+--         end , opts)
+--     vim.keymap.set("i", "<S-Tab>", function()
+--             if vim.fn['coc#pum#visible']() == 1 then
+--                 return vim.fn['coc#pum#prev'](1)
+--             end
+--             return "<S-Tab>"
+--         end, opts)
+--     vim.keymap.set( "i", "<CR>",
+--         function() if vim.fn['coc#pum#visible']() == 1 then
+--                 return vim.fn['coc#pum#confirm']();
+--             end
+--             return "\r"
+--         end, opts)
+--
+--     -- GoTo code navigation
+--     keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
+--     keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
+--     keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+--     keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
+--
+--     -- Format
+--     vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+--
+--     -- Organize imports
+--     vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'editor.action.organizeImport')", {})
+--
+--     -- Formatting selected code
+--     keyset("x", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
+--     keyset("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
+--
+--     -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
+--     vim.api.nvim_create_augroup("CocGroup", {})
+--     vim.api.nvim_create_autocmd("CursorHold", {
+--         group = "CocGroup",
+--         command = "silent call CocActionAsync('highlight')",
+--         desc = "Highlight symbol under cursor on CursorHold",
+--     })
+--
+--     -- Setup formatexpr specified filetype(s)
+--     vim.api.nvim_create_autocmd("FileType", {
+--         group = "CocGroup",
+--         pattern = "typescript,json",
+--         command = "setl formatexpr=CocAction('formatSelected')",
+--         desc = "Setup formatexpr specified filetype(s).",
+--     })
+--
+--     end,
+-- }
+
+return {
+}
+
+-- coc-settings.json
+-- {
+--   "coc.preferences.useQuickfixForLocations": true,
+--   "python.linting.ruffEnabled": true,
+--   "pyright.enable": true,
+--   "python.formatting.provider": "ruff",
+--   "python.linting.ruffArgs": ["--line-length=150", "--fix"],
+--   "python.analysis.diagnosticSeverityOverrides": {
+--        "reportGeneralTypeIssues": "none",
+--        "reportOptionalMemberAccess ": "none",
+--        "reportOptionalOperand ": "none",
+--        "reportOptionalSubscript ": "none",
+--        "reportWildcardImportFromLibrary ": "none"
+--    },
+--   "snippets.ultisnips.pythonPrompt": false,
+--   "suggest.enablePreselect": false,
+--   "suggest.noselect": true,
+--   "diagnostic.checkCurrentLine": true,
+--   "diagnostic.showUnused":false,
+--   "diagnostic.level": "information",
+--   "suggest.completionItemKindLabels": {
+--     "method": "  ",
+--     "function": "  ",
+--     "variable": "[]",
+--     "field": "  ",
+--     "typeParameter": "<>",
+--     "constant": "  ",
+--     "class": " פּ ",
+--     "interface": " 蘒",
+--     "struct": "  ",
+--     "event": "  ",
+--     "operator": "  ",
+--     "module": "  ",
+--     "property": "  ",
+--     "enum": " 練",
+--     "reference": "  ",
+--     "keyword": "  ",
+--     "file": "  ",
+--     "folder": " ﱮ ",
+--     "color": "  ",
+--     "unit": " 塞 ",
+--     "snippet": "  ",
+--     "text": "  ",
+--     "constructor": "  ",
+--     "value": "  ",
+--     "enumMember": "  "
+--   },
+--   "ruff.useDetectRuffCommand": true,
+--   "ruff.autoFixOnSave": true,
+--   "ruff.enable": true,
+--   "ruff.disableHover": true,
+--   "inlayHint.enable": false,
+--   "coc.preferences.formatOnSave": false,
+--   "sql.database": "transactsql"
+-- }

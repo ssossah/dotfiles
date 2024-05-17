@@ -1,4 +1,4 @@
-![alt text](https://github.com/ssossah/dotfiles/blob/master/welcome.png?raw=true)
+![alt text](https://github.com/ssossah/dotfiles/blob/master/welcome.png)
 
 <u>My Setup:</u>
 
