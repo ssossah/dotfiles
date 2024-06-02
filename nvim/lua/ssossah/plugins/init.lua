@@ -12,6 +12,6 @@ return {
     "tpope/vim-speeddating", -- incrementing numbers and dates
     "lepture/vim-jinja", -- jinja support
     "rhysd/conflict-marker.vim", -- provides support for git conflicts
+    "MTDL9/vim-log-highlighting", -- integration with logs
     -- "mg979/vim-visual-multi", -- provides ability to use mutliple cursors in visual/normal mode
-    --"Tastyep/structlog.nvim", -- integration with logs
 }

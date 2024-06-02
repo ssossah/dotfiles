@@ -2,6 +2,7 @@
 return {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    version = "v5.7.0",
     config = function()
         local conform = require("conform")
 
@@ -14,9 +15,8 @@ return {
                 html = { "prettier" },
                 css = { "prettier" },
                 javascript = { "prettier" },
-                json = {"prettier"}
+                json = { "prettier" },
             },
-            -- },
         })
 
         local function format_file()
@@ -39,13 +39,6 @@ return {
         vim.api.nvim_create_user_command("OR", organize_imports, {})
     end,
 }
-
-
--- -- format on save
--- format_on_save = {
---     lsp_fallback = true,
---     async = false,
---     timeout_ms = 1000,
 
 -- -- organize imports on save
 -- vim.api.nvim_create_autocmd("BufWritePre", {

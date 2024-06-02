@@ -129,7 +129,8 @@ return {
                 h = { "<cmd>BufferLineCloseLeft<cr>", "Close buffers on left" },
                 m = { "<cmd>BufferLinePick<cr>", "Select a buffer to navigate to" },
                 c = { "<cmd>BufferLinePickClose<cr>", "Select a buffer to close" },
-                t = { "<cmd>GitBlameToggle<cr>", "Git blame toggle" },
+                t = { "<cmd>GitBlameToggle<cr>", "Blame toggle" },
+                b = { "<cmd>GitBlameOpenCommitURL<cr>", "Blame open commit url" },
             },
             ["<leader>x"] = {
                 name = "Database and Trouble",
