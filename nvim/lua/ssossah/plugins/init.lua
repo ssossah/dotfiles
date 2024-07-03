@@ -13,5 +13,7 @@ return {
     "lepture/vim-jinja", -- jinja support
     "rhysd/conflict-marker.vim", -- provides support for git conflicts
     "MTDL9/vim-log-highlighting", -- integration with logs
+    "taybart/b64.nvim", -- encode/decode base64
+    -- "phelipetls/jsonpath.nvim", -- highlight json path based on key cursor is on
     -- "mg979/vim-visual-multi", -- provides ability to use mutliple cursors in visual/normal mode
 }

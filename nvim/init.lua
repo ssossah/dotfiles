@@ -7,8 +7,7 @@ vim.cmd(
     [[ au BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) && winnr('$') == 1 | exec 'Alpha' | endif ]]
 )
 
+
+
 -- TODO:
 -- nvim dap missing config to work
-
--- BUG:
--- fix todo telescope
