@@ -14,7 +14,11 @@ return {
     config = function()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
-        local trouble = require("trouble.providers.telescope")
+        -- local trouble = require("trouble.providers.telescope")
+        local trouble = require("trouble.sources.telescope").open
+        --
+        -- Use this to add more results without clearing the trouble list
+        local add_to_trouble = require("trouble.sources.telescope").add
 
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "TelescopeResults",
@@ -30,8 +34,11 @@ return {
             defaults = { -- path_display = { "filename_first" },
 
                 mappings = {
-                    i = { ["<esc>"] = actions.close },
-                    n = { ["<C-t>"] = trouble.open },
+                    i = {
+                        ["<esc>"] = actions.close,
+                        ["<C-l>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                    },
+                    n = { ["<C-t>"] = trouble },
                 },
                 multi_icon = "",
                 previewer = false,
@@ -144,6 +151,7 @@ return {
         telescope.load_extension("fzf")
         telescope.load_extension("ui-select")
         telescope.load_extension("notify")
+        -- telescope.load_extension("changed_files")
 
         vim.cmd([[ highlight TelescopeMultiSelection guibg=None guifg=none]])
 

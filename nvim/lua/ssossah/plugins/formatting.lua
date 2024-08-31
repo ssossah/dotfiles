@@ -8,14 +8,15 @@ return {
 
         conform.setup({
             formatters_by_ft = {
-                python = { "ruff-lsp" },
+                python = { "ruff-lsp" }, -- NOTE: created pyproject.toml in home directory
                 lua = { "stylua" },
                 markdown = { "prettier" },
                 yaml = { "prettier" },
                 html = { "prettier" },
                 css = { "prettier" },
                 javascript = { "prettier" },
-                json = { "prettier" },
+                json = { "prettier" }, -- NOTE: created .prettierrc in home directory
+                xml = { "xmlformat"}
             },
         })
 

@@ -35,9 +35,9 @@ return {
                 "prettier",
                 "stylua",
                 "ruff-lsp", -- @0.0.52
-                -- "pylint",
                 "debugpy", -- nvim dap
                 "rust-analyzer",
+                "xmlformatter",
             },
         })
     end,

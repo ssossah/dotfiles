@@ -73,6 +73,17 @@ return {
                 e = { "<C-w>=", "Make split window equal in size" },
                 x = { "<cmd>close<CR>", "Close current split window" },
             },
+            ["<leader>q"] = {
+                name = "Quickfix stuff",
+                -- copen, close, tab zN (removes from list), tab zn (creates a separate list)
+                n = { "<cmd>cnext<cr>", "Forward qfixlist" },
+                N = { "<cmd>cprev<cr>", "Backward qfixlist" },
+            },
+            ["<leader>l"] = {
+                name = "location list stuff",
+                n = { "<cmd>lnext<cr>", "Forward location list" },
+                N = { "<cmd>lprev<cr>", "Backward location list" },
+            },
             ["<leader>f"] = {
                 name = "Find",
                 a = { "<cmd>Telescope quickfix<cr>", "Toggle quickfix list" },
@@ -89,6 +100,12 @@ return {
                 w = { "<cmd>Telescope live_grep<cr>", "Find Word" },
                 i = { "<cmd>Telescope highlights<cr>", "Find Word" },
                 t = { "<cmd>TodoTelescope<cr>", "Find todos" },
+            },
+            ["<leader>e"] = {
+                name = "Find",
+                d = { "<cmd>Easypick changed_files<cr>", "View all modified files for this branch against develop" },
+                c = { "<cmd>Easypick conficts<cr>", "View all files with merge conflicts" },
+                l = { "<cmd>Easypick ls<cr>", "list all files in current directory (does not search subdirectories)" },
             },
             ["<leader>n"] = {
                 name = "Nvim Tree",

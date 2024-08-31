@@ -1,30 +1,3 @@
--- super fast git decorations
--- return {
---     "lewis6991/gitsigns.nvim",
---     event = { "BufReadPre", "BufNewFile" },
---     opts = {
---         on_attach = function(bufnr)
---             local gs = package.loaded.gitsigns
---
---             local function map(mode, l, r, desc)
---                 vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
---             end
---
---             -- Navigation
---             map("n", "]h", gs.next_hunk, "Next hunk")
---             map("n", "[h", gs.prev_hunk, "Previous hunk")
---
---             -- diffs
---             map("n", "<leader>hd", gs.diff_this, "Diff this")
---             map("n", "<leader>hD", gs.diff_this("~"), "Diff this ~")
---
---             -- config = function()
---             --     require("gitsigns").setup({})
---             -- end,
---         end,
---     },
--- }
-
 return {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },

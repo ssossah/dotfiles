@@ -29,6 +29,7 @@ return {
                 "markdown_inline",
                 "sql",
                 "json",
+                "xml",
                 "gitignore",
                 "bash",
                 "vimdoc",

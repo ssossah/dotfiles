@@ -98,12 +98,19 @@ return {
                 end
             end
         end
-        local on_attach = function(client)
+        local on_attach_ruff = function(client)
             if client.name == "ruff_lsp" then
                 -- Disable hover in favor of Pyright
                 client.server_capabilities.hoverProvider = false
             end
         end
+
+        local on_attach_pyright = function(client, bufnr)
+            vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>vim.lsp.buf.hover<CR>", { noremap = true, silent = true}) -- show documentation for what is under cursor
+            vim.api.nvim_buf_set_keymap(bufnr, "i", "K", "<cmd>vim.lsp.buf.hover<CR>", { noremap = true, silent = true}) -- show documentation for what is under cursor
+            vim.api.nvim_create_autocmd("CursorHoldI", { buffer = bufnr, callback = function() vim.lsp.buf.signature_help() end })
+        end
+
 
         -- configure lsp language servers in a specific way
         mason_lspconfig.setup_handlers({
@@ -128,6 +135,7 @@ return {
                 lspconfig["pyright"].setup({
                     -- server specific settings. See `:help lspconfig-setup`
                     capabilities = capabilities,
+                    on_attach = on_attach_pyright,
                     settings = {
                         -- Using Ruff's import organizer
                         disableOrganizeImports = true,
@@ -136,7 +144,7 @@ return {
                                 -- -- Ignore all files for analysis to exclusively use Ruff for linting
                                 -- ignore = { "*" },
                                 diagnosticMode = "workspace",
-                                typeCheckingMode = "basic",
+                                typeCheckingMode = "off",
                                 autoSearchPaths = true,
                                 useLibraryCodeForTypes = true,
                                 diagnosticSeverityOverrides = {
@@ -145,8 +153,11 @@ return {
                                     reportOptionalOperand = "none",
                                     reportOptionalSubscript = "none",
                                     reportWildcardImportFromLibrary = "none",
+                                    typeCheckingMode = "none",
+                                    reportMissingTypeHints = "none"
                                 },
                             },
+                            -- analysis = { diagnostics = "off", typeCheckingMode = "off"}
                         },
                     },
                     before_init = function(_, config)
@@ -157,6 +168,7 @@ return {
                         config.settings.python.pythonPath = get_python_path(config.root_dir)
                     end,
                 })
+
             end,
             ["lua_ls"] = function()
                 -- configure lua server (with special settings)
@@ -178,7 +190,7 @@ return {
             ["ruff_lsp"] = function()
                 lspconfig["ruff_lsp"].setup({
                     capabilities = capabilities,
-                    on_attach = on_attach,
+                    on_attach = on_attach_ruff,
                     init_options = {
                         args = {
                             "--config",

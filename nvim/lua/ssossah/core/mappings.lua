@@ -10,5 +10,6 @@ map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 
 
--- other
-map('v', '<M-c>', '"+y', opts)                    -- copy and pasting
+-- copy and pasting
+-- map('v', '<M-c>', '"+y', opts)
+map('v', 'y', '"+y', opts)
