@@ -34,7 +34,7 @@ return {
             ensure_installed = {
                 "prettier",
                 "stylua",
-                "ruff-lsp", -- @0.0.52
+                "ruff", -- @0.0.52
                 "debugpy", -- nvim dap
                 "rust-analyzer",
                 "xmlformatter",

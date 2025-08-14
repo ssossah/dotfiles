@@ -65,6 +65,7 @@ return {
         map("n", "<A-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
         map("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
 
+
         local mappings = {
             ["<leader>s"] = {
                 name = "Splitting Windows",
@@ -106,6 +107,11 @@ return {
                 d = { "<cmd>Easypick changed_files<cr>", "View all modified files for this branch against develop" },
                 c = { "<cmd>Easypick conficts<cr>", "View all files with merge conflicts" },
                 l = { "<cmd>Easypick ls<cr>", "list all files in current directory (does not search subdirectories)" },
+            },
+            ["<leader>y"] = {
+                name = "Quickfix stuff",
+                -- a = { "<cmd>:Start -wait=always pytest -svv %<cr>", "Run full pytest test suite" },
+                -- o = { "<cmd>tyiw:Start -wait=always pytest -svv % -k <C-R>t<CR><cr>", "list all files in current directory (does not search subdirectories)" },
             },
             ["<leader>n"] = {
                 name = "Nvim Tree",

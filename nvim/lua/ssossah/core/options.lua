@@ -48,3 +48,4 @@ g.nvim_tree_auto_close = 1
 g.nvim_tree_quit_on_open = 0
 g.barbar_auto_setup = false
 g.nvim_tree_hide_dotfiles = 1 --"0 by default, this option hides files and folders starting with a dot `.`
+opt.listchars = 'tab:» ,lead:•,trail:-'

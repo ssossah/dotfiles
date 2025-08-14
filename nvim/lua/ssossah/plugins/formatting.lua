@@ -8,7 +8,7 @@ return {
 
         conform.setup({
             formatters_by_ft = {
-                python = { "ruff-lsp" }, -- NOTE: created pyproject.toml in home directory
+                python = { "ruff" }, -- NOTE: created pyproject.toml in home directory
                 lua = { "stylua" },
                 markdown = { "prettier" },
                 yaml = { "prettier" },
